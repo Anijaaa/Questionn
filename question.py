@@ -46,9 +46,6 @@ async def on_ready():
    
 @client.event
 async def on_reaction_add(reaction, user):
-    message = reaction.message
-    if not message.id == "571693879871668234":
-        return
     msg = await client.get_message(client.get_channel('571521713121001483'), "571693879871668234")
     while True:
         reaction = await client.wait_for_reaction(emoji="🇯🇵", message=msg)
