@@ -302,7 +302,7 @@ async def on_message(message):
                     color=discord.Color(0xc088ff),
                 )
                 embed.set_footer(
-                    text=f"You are viwing {page} in {math.ceil(len(numbers) / 5}!"
+                    text=f"You are viwing {page} in {math.ceil(len(numbers) / 5)}!"
                 )
                 msg = await client.send_message(message.channel,embed=embed)
                 while True:
@@ -325,7 +325,7 @@ async def on_message(message):
                             color=discord.Color(0xc088ff),
                         )
                         embed.set_footer(
-                            text=f"You are viwing {page} in {math.ceil(len(numbers) / 5}!"
+                            text=f"You are viwing {page} in {math.ceil(len(numbers) / 5)}!"
                         )
                         await client.edit_message(msg,embed=embed)
                         await client.clear_reactions(msg)
