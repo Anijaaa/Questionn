@@ -44,10 +44,8 @@ def predicate(message,l,r):
 async def on_ready():
     await client.change_presence(game=discord.Game(name="<help | ver:1.0.0"))
     msg = await client.get_message(client.get_channel('571521713121001483'), "571693879871668234")
-    id = "571695420414099479"
-    emoji = client.get_emoji(id)
-    id = "571695709871669258"
-    emoji1 = client.get_emoji(id)
+    emoji = client.get_emoji(571695420414099479)
+    emoji1 = client.get_emoji(571695709871669258)
     while True:
         reaction = await bot.wait_for_reaction(emoji=emoji, message=msg)
         role = discord.utils.get(reaction.server.roles, name="Japan")
