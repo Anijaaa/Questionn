@@ -47,16 +47,15 @@ async def on_ready():
     msg = await client.get_message(client.get_channel('571521713121001483), "571693879871668234")
     id = "571695420414099479"
     emoji = client.get_emoji(id)
-    while True:
-        reaction = await bot.wait_for_reaction(emoji=emoji, message=msg)
-        await bot.add_roles(reaction.message.author, role)
-    role = discord.utils.get(message.server.roles, name="English")
+    role1 = discord.utils.get(message.server.roles, name="English")
     msg = await client.get_message(client.get_channel('571521713121001483), "571693879871668234")
     id = "571695709871669258"
-    emoji = client.get_emoji(id)
+    emoji1 = client.get_emoji(id)
     while True:
         reaction = await bot.wait_for_reaction(emoji=emoji, message=msg)
         await bot.add_roles(reaction.message.author, role)
+        reaction = await bot.wait_for_reaction(emoji=emoji1, message=msg)
+        await bot.add_roles(reaction.message.author, role1)
 
 
 # -------------------------------------------------------------------------------------------------------------------
