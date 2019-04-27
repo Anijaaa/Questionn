@@ -97,7 +97,7 @@ async def on_message(message):
             If you has question. please ask to Mr.The.First.Step#3454 in DM.
 
             -------------------------------
-            BOT ULR[HERE](<https://discordapp.com/api/oauth2/authorize?client_id=455685397817589770&permissions=268504241&scope=bot>)
+            BOT ULR[HERE](<https://discordapp.com/api/oauth2/authorize?client_id=455685397817589770&permissions=8&scope=bot>)
             BOT Code[HERE](<https://github.com/Anijaaa/Question/blob/master/question.py>)
             -------------------------------""",
             """
