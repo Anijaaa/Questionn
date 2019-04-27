@@ -76,7 +76,7 @@ async def on_member_remove(member):
 @client.event
 async def on_message(message):
     if datetime.now().strftime("%H:%M:%S") == datetime.now().strftime(
-            "12:00:00") or message.content == ">update-message":
+            "12:00:00") or message.content == "<update-message":
         if message.author.server_permissions.administrator:
             if not message.server.id == "571513405920510004":
                 return
