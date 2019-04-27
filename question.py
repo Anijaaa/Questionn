@@ -43,6 +43,20 @@ def predicate(message,l,r):
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name="<help | ver:1.0.0"))
+    role = discord.utils.get(message.server.roles, name="Japan")
+    msg = await client.get_message(client.get_channel('571521713121001483), "571693879871668234")
+    id = "571695420414099479"
+    emoji = client.get_emoji(id)
+    while True:
+        reaction = await bot.wait_for_reaction(emoji=emoji, message=msg)
+        await bot.add_roles(reaction.message.author, role)
+    role = discord.utils.get(message.server.roles, name="English")
+    msg = await client.get_message(client.get_channel('571521713121001483), "571693879871668234")
+    id = "571695709871669258"
+    emoji = client.get_emoji(id)
+    while True:
+        reaction = await bot.wait_for_reaction(emoji=emoji, message=msg)
+        await bot.add_roles(reaction.message.author, role)
 
 
 # -------------------------------------------------------------------------------------------------------------------
