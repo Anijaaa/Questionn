@@ -47,10 +47,10 @@ async def on_ready():
     while True:
         reaction = await client.wait_for_reaction(emoji="🇯🇵", message=msg)
         role = discord.utils.get(reaction.server.roles, name="Japan")
-        await client.add_roles(reaction.author, role)
+        await client.add_roles(reaction.message.author, role)
         reaction = await client.wait_for_reaction(emoji="🇺🇸", message=msg)
         role1 = discord.utils.get(reaction.server.roles, name="English")
-        await client.add_roles(reaction.author, role1)
+        await client.add_roles(reaction.message.author, role1)
 
 
 # -------------------------------------------------------------------------------------------------------------------
