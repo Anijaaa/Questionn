@@ -470,7 +470,7 @@ async def on_message(message):
                      "乳首","陰茎","うざい","黙れ","きもい","やりますねぇ！","覚醒剤","覚せい剤","麻薬","コカイン","SEX","害児","pornhub","xvideo","せっくす",
                      "mother fucker","金正恩","penis","fuck","死ね","殺す","アホ","赤ちゃん製造ミルク","ザー汁","ザーメン","精液","精子","こ↑こ↓",
                      "やりますねぇ"]
-        if any([True for s in out_words if s in message.content]):
+        if any([True for s in out_words if s in message.content[14:]]):
             embed = discord.Embed(
                 description=f"Hey {message.author.mention}!\nYour question were inputed prohibited term so you can't create this question.",
                 color=discord.Color(0xc088ff),
