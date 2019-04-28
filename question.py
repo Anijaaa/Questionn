@@ -42,6 +42,7 @@ def predicate(message,l,r):
 # -------------------------------------------------------------------------------------------------------------------
 @client.event
 async def on_ready():
+    await client.change_presence(game=discord.Game(name="<help | ver:1.0.0"))
     async for log in client.logs_from(client.get_channel("571521713121001483"),limit=100):
         if log.channel.id == "571521713121001483":
             await client.delete_message(log)
