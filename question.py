@@ -120,6 +120,7 @@ async def on_message(message):
             -------------------------------
             BOT ULR[HERE](<https://discordapp.com/api/oauth2/authorize?client_id=455685397817589770&permissions=8&scope=bot>)
             BOT Code[HERE](<https://github.com/Anijaaa/Question/blob/master/question.py>)
+            OFFICIAL SERVER[HERE](<https://discord.gg/4YatQpp>)
             -------------------------------""",
             """
             Command-List
