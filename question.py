@@ -45,10 +45,9 @@ async def on_ready():
     counter = 0
     all_message = "571660933915607040"
     channel_name = client.get_channel(all_message)
-    for i in message.server.channels:
-        async for log in client.logs_from(i,limit=99999999999):
-            if log.server.id == message.server.id:
-                counter += 1
+    async for log in client.logs_from(channel_name.server.channels,limit=9999999):
+        if log.server.id == "571513405920510004":
+            counter += 1
     await client.edit_channel(channel_name,name="MESSAGE COUNT : {}".format(counter))
     async for log in client.logs_from(client.get_channel("571521713121001483"),limit=100):
         if log.channel.id == "571521713121001483":
