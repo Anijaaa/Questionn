@@ -42,15 +42,28 @@ def predicate(message,l,r):
 # -------------------------------------------------------------------------------------------------------------------
 @client.event
 async def on_ready():
-    await client.change_presence(game=discord.Game(name="<help | ver:1.0.0"))
-    msg = await client.get_message(client.get_channel('571521713121001483'), "571693879871668234")
-    while True:
-        reaction = await client.wait_for_reaction(emoji="🇯🇵", message=msg)
-        role = discord.utils.get(reaction.server.roles, name="Japan")
-        await client.add_roles(reaction.message.author, role)
-        reaction = await client.wait_for_reaction(emoji="🇺🇸", message=msg)
-        role1 = discord.utils.get(reaction.server.roles, name="English")
-        await client.add_roles(reaction.message.author, role1)
+    async for log in client.logs_from(client.get_channel("571521713121001483"),limit=100):
+        if log.channel.id == "571521713121001483":
+            await client.delete_message(log)
+    else:
+        channel = client.get_channel('571521713121001483')
+        embed = discord.Embed(
+            description="もし日本人なら:flag_jp:を押してください！\nIf you are English. Please push :flag_us:!!",
+        )
+        message = await client.send_message(channel,embed=embed)
+        await client.add_reaction(message,"🇯🇵")
+        await client.add_reaction(message,"🇺🇸")
+        while True:
+            role = discord.utils.get(channel.server.roles,name="Japan")
+            reaction,react = await client.wait_for_reaction(emoji="🇯🇵", message=message)
+            if react == client.user:
+                return
+            await client.add_roles(react, role)
+            role1 = discord.utils.get(channel.server.roles,name="English")
+            reaction,react = await client.wait_for_reaction(emoji="🇺🇸",message=message)
+            if react == client.user:
+                return
+            await client.add_roles(react,role1)
 
 
 # -------------------------------------------------------------------------------------------------------------------
