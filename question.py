@@ -42,6 +42,14 @@ def predicate(message,l,r):
 # -------------------------------------------------------------------------------------------------------------------
 @client.event
 async def on_ready():
+    counter = 0
+    all_message = "571660933915607040"
+    channel_name = client.get_channel(all_message)
+    for i in message.server.channels:
+        async for log in client.logs_from(i,limit=99999999999):
+            if log.server.id == message.server.id:
+                counter += 1
+    await client.edit_channel(channel_name,name="MESSAGE COUNT : {}".format(counter))
     async for log in client.logs_from(client.get_channel("571521713121001483"),limit=100):
         if log.channel.id == "571521713121001483":
             await client.delete_message(log)
@@ -96,21 +104,6 @@ async def on_member_remove(member):
 
 @client.event
 async def on_message(message):
-    if datetime.now().strftime("%H:%M:%S") == datetime.now().strftime(
-            "12:00:00") or message.content == "<update-message":
-        if message.author.server_permissions.administrator:
-            if not message.server.id == "571513405920510004":
-                return
-            await client.delete_message(message)
-            counter = 0
-            all_message = "571660933915607040"
-            channel_name = client.get_channel(all_message)
-            for i in message.server.channels:
-                async for log in client.logs_from(i,limit=99999999999):
-                    if log.server.id == message.server.id:
-                        counter += 1
-            await client.edit_channel(channel_name,name="MESSAGE COUNT : {}".format(counter))
-            return
     help_message = ["""
             -------------------------------
             This BOT was produced by Mr.𝗠𝗞𝗠𝗞𝟭𝟭𝟬𝟭™#3577
