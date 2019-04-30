@@ -35,7 +35,6 @@ def predicate(message,l,r):
         if r and reaction.emoji == right:
             return True
         return False
-
     return check
 
 
@@ -43,28 +42,6 @@ def predicate(message,l,r):
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name="<help | ver:1.0.0"))
-    async for log in client.logs_from(client.get_channel("571521713121001483"),limit=100):
-        if log.channel.id == "571521713121001483":
-            await client.delete_message(log)
-    else:
-        channel = client.get_channel('571521713121001483')
-        embed = discord.Embed(
-            description="もし日本人なら:flag_jp:を押してください！\nIf you are English. Please push :flag_us:!!",
-        )
-        message = await client.send_message(channel,embed=embed)
-        await client.add_reaction(message,"🇯🇵")
-        await client.add_reaction(message,"🇺🇸")
-        while True:
-            role = discord.utils.get(channel.server.roles,name="Japan")
-            reaction,react = await client.wait_for_reaction(emoji="🇯🇵", message=message)
-            if react == client.user:
-                return
-            await client.add_roles(react, role)
-            role1 = discord.utils.get(channel.server.roles,name="English")
-            reaction,react = await client.wait_for_reaction(emoji="🇺🇸",message=message)
-            if react == client.user:
-                return
-            await client.add_roles(react,role1)
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -93,7 +70,27 @@ async def on_member_remove(member):
     await client.edit_channel(client.get_channel(get_bot),
                               name="BOT COUNT : {}".format(
                                   len([member for member in member.server.members if member.bot])))
-
+async def reaction():
+    await client.wait_until_ready()
+    while not client.is_closed:
+        async for log in client.logs_from(client.get_channel("571521713121001483"),limit=100):
+            if log.channel.id == "571521713121001483":
+                await client.delete_message(log)
+        else:
+            channel = client.get_channel('571521713121001483')
+            embed = discord.Embed(
+                description="もし日本人なら:flag_jp:を押してください！\nIf you are English. Please push :flag_us:!!",
+            )
+            message = await client.send_message(channel,embed=embed)
+            await client.add_reaction(message,"🇯🇵")
+            await client.add_reaction(message,"🇺🇸")
+            while True:
+                role = discord.utils.get(channel.server.roles,name="Japan")
+                reaction,react = await client.wait_for_reaction(emoji="🇯🇵", message=message)
+                await client.add_roles(react, role)
+                role1 = discord.utils.get(channel.server.roles,name="English")
+                reaction,react = await client.wait_for_reaction(emoji="🇺🇸",message=message)
+                await client.add_roles(react,role1)
 
 @client.event
 async def on_message(message):
@@ -856,5 +853,5 @@ def db_reset_all_question(create_id):
     con.close()
     return True
 
-
+client.loop.create_task(reaction())
 client.run(os.environ.get("TOKEN"))
